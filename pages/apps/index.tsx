@@ -1,4 +1,4 @@
-import { App, User } from '../../interfaces'
+import { App } from '../../interfaces'
 import Layout from '../../components/Layout'
 import React from "react";
 import AppsList from "../../components/AppsList";

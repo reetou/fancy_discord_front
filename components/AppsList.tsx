@@ -1,19 +1,36 @@
 import * as React from 'react'
-import ListItem from './ListItem'
 import { App } from '../interfaces'
+import styled from "styled-components";
+import AppItem from "./AppItem";
+import Button from "./Button";
+import Link from 'next/link'
 
 type Props = {
   items: App[]
 }
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+`
+
+const CreateAppContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`
+
 const AppsList = ({ items }: Props) => (
-  <ul>
+  <Container>
+    <CreateAppContainer>
+      <Link href="/apps/create">
+        <Button text="Create App" onClick={() => {}} />
+      </Link>
+    </CreateAppContainer>
     {items.map((item) => (
-      <li key={item.id}>
-        <ListItem data={item} />
-      </li>
+      <AppItem key={item.id} data={item} />
     ))}
-  </ul>
+  </Container>
 )
 
 export default AppsList
