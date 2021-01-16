@@ -8,3 +8,14 @@ export type User = {
   id: number
   name: string
 }
+
+export type AppType = 'js'
+
+export type App = {
+  id: string
+  project_name: string
+  type: AppType
+  repo_url: string | null
+  default_branch: string
+  has_bot_token: boolean
+}
