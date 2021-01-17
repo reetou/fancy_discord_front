@@ -19,6 +19,7 @@ export type App = {
   repo_url: string | null
   default_branch: string
   has_bot_token: boolean
+  deployed: boolean
 }
 
 export type AppForm = {

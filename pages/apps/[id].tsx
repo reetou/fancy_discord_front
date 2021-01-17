@@ -9,7 +9,6 @@ import { useEffect, useState } from "react";
 import DeployDetails from "../../components/DeployDetails";
 import Deploy from "../../api/Deploy";
 import styled from "styled-components";
-import Button from "../../components/Button";
 
 type Props = {
   item: App
@@ -18,7 +17,7 @@ type Props = {
 
 
 const ErrorMessageContainer = styled.div`
-  margin: 2rem;
+  margin: 1rem;
   background-color: crimson;
   padding: 1rem;
   font-size: 1.2rem;
@@ -53,7 +52,7 @@ const AppPage = ({ item, errors }: Props) => {
   }
   const onDestroyDeploy = async () => {
     try {
-      const data = await Deploy.destroyDeploy(item.id)
+      await Deploy.destroyDeploy(item.id)
     } catch (e) {
       console.error(`Cannot destroy deploy`, e)
     }
@@ -73,9 +72,11 @@ const AppPage = ({ item, errors }: Props) => {
 
   return (
     <Layout title={item.project_name}>
-      <h1>{item.project_name}</h1>
-      <Button text="Destroy deploy" onClick={onDestroyDeploy} />
-      <AppDetails data={item} onDeploy={onDeploy} />
+      <AppDetails
+        data={item}
+        onDeploy={onDeploy}
+        onDestroyDeploy={onDestroyDeploy}
+      />
       {deployDetails ? <DeployDetails data={deployDetails} /> : null}
       {errorMessage ? <ErrorMessageContainer>{errorMessage}</ErrorMessageContainer> : null}
     </Layout>

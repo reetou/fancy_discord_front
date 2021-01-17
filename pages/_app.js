@@ -17,6 +17,13 @@ const GlobalStyle = createGlobalStyle`
     color: ${theme.colors.primary};
     font-family: 'Roboto', sans-serif;
   }
+  a {
+    color: ${theme.colors.primary};
+    text-decoration: none;
+    :visited {
+      color: ${theme.colors.primary};
+    }
+  }
 `
 
 export default function App({ Component, pageProps }) {

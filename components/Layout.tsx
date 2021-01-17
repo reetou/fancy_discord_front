@@ -1,41 +1,49 @@
-import React, { ReactNode } from 'react'
+import React, { ReactNode, useEffect, useState } from 'react'
 import Link from 'next/link'
 import Head from 'next/head'
+import Navbar from "./Navbar";
+import styled from "styled-components";
+import Footer from "./Footer";
+import useSWR from 'swr';
+import { fetcher } from "../api/fetcher";
 
 type Props = {
   children?: ReactNode
   title?: string
 }
 
-const Layout = ({ children, title = 'This is the default title' }: Props) => (
-  <div>
-    <Head>
-      <title>{title}</title>
-      <meta charSet="utf-8" />
-      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-    </Head>
-    <header>
-      <nav>
-        <Link href="/">
-          <a>Home</a>
-        </Link>{' '}
-        |{' '}
-        <Link href="/about">
-          <a>About</a>
-        </Link>{' '}
-        |{' '}
-        <Link href="/apps">
-          <a>Apps List</a>
-        </Link>{' '}
-        | <a href="/api/users">Users API</a>
-      </nav>
-    </header>
-    {children}
-    <footer>
-      <hr />
-      <span>I'm here to stay (Footer)</span>
-    </footer>
-  </div>
-)
+const BodyContainer = styled.div`
+  padding: 0 1rem;
+  min-height: calc(100vh - 60px);
+`
+
+const Layout = ({ children, title = 'This is the default title' }: Props) => {
+  const [authenticated, setAuthenticated] = useState<boolean>(false)
+  const { data, error } = useSWR('/auth/check', fetcher)
+  useEffect(() => {
+    if (error) {
+      setAuthenticated(false)
+    }
+    if (data) {
+      setAuthenticated(true)
+    }
+  }, [data, error])
+  return (
+    <div>
+      <Head>
+        <title>{title}</title>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+      <header>
+        <Navbar authenticated={authenticated} />
+      </header>
+      <BodyContainer>
+        {children}
+      </BodyContainer>
+      <Footer />
+    </div>
+  )
+}
 
 export default Layout
