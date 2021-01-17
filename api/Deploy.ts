@@ -22,6 +22,14 @@ const createDeploy = async (id: string): Promise<{job: DeployJob}> => {
   return res.data
 }
 
+const initDeploy = async (id: string): Promise<{job: DeployJob}> => {
+  const res = await axios({
+    method: 'POST',
+    url: `/apps/${id}/deploys/init`,
+  })
+  return res.data
+}
+
 const destroyDeploy = async (id: string): Promise<{}> => {
   const res = await axios({
     method: 'POST',
@@ -34,4 +42,5 @@ export default {
   lastDetails,
   createDeploy,
   destroyDeploy,
+  initDeploy,
 }

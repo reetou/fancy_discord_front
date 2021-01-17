@@ -57,6 +57,14 @@ const AppPage = ({ item, errors }: Props) => {
       console.error(`Cannot destroy deploy`, e)
     }
   }
+  const onInitDeploy = async () => {
+    try {
+      const res = await Deploy.initDeploy(item.id)
+      console.log(`Data`, res)
+    } catch (e) {
+      console.error(`Cannot init`, e)
+    }
+  }
   useEffect(() => {
     getDeployDetails()
   }, [])
@@ -76,8 +84,9 @@ const AppPage = ({ item, errors }: Props) => {
         data={item}
         onDeploy={onDeploy}
         onDestroyDeploy={onDestroyDeploy}
+        onInitDeploy={onInitDeploy}
       />
-      {deployDetails ? <DeployDetails data={deployDetails} /> : null}
+      {deployDetails && item.deployed ? <DeployDetails data={deployDetails} /> : null}
       {errorMessage ? <ErrorMessageContainer>{errorMessage}</ErrorMessageContainer> : null}
     </Layout>
   )

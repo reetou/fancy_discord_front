@@ -48,3 +48,6 @@ A `type-check` script is also added to `package.json`, which runs TypeScript's `
 - [x] Apps list  
 - [x] Create app  
 - [x] Deploy app
+- [ ] Add SWR to app details page
+- [ ] Add better job status
+- [ ] Add guides

@@ -9,6 +9,7 @@ type Props = {
   data: App
   onDeploy: () => void
   onDestroyDeploy: () => void
+  onInitDeploy: () => void
 }
 
 const Container = styled.div`
@@ -24,7 +25,7 @@ const Field = styled.div`
 
 const FAKE_TOKEN = '********************************'
 
-const AppDetails = ({ data, onDeploy, onDestroyDeploy }: Props) => {
+const AppDetails = ({ data, onDeploy, onDestroyDeploy, onInitDeploy }: Props) => {
   return (
     <Container>
       <h1>{data.project_name}</h1>
@@ -66,7 +67,13 @@ const AppDetails = ({ data, onDeploy, onDestroyDeploy }: Props) => {
             />
           )
           : (
-            <Field>App is being initialized...</Field>
+            <Button
+              style={{
+                width: 220
+              }}
+              text="Initialize app"
+              onClick={onInitDeploy}
+            />
           )
       }
     </Container>

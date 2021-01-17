@@ -32,7 +32,12 @@ const DeployDetails = ({ data }: Props) => {
           : null
       }
       {
-        data.status === 'pending' || data.status === 'running'
+        data.status === 'pending'
+          ? <div>{`Deploy is in queue...`}</div>
+          : null
+      }
+      {
+        data.status === 'running'
           ? <div>{`Deploy is in progress...`}</div>
           : null
       }
