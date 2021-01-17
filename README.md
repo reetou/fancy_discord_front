@@ -43,8 +43,8 @@ A `type-check` script is also added to `package.json`, which runs TypeScript's `
 
 ## TODO
 
-- [ ] Auth  
-- [ ] Main page  
-- [ ] Apps list  
-- [ ] Create app  
-- [ ] Deploy app
+- [x] Auth  
+- [x] Main page  
+- [x] Apps list  
+- [x] Create app  
+- [x] Deploy app
