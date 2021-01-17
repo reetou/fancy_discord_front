@@ -10,6 +10,7 @@ export type User = {
 }
 
 export type AppType = 'js'
+export type DeployJobStatus = 'success' | 'failed' | 'canceled' | 'running' | 'pending'
 
 export type App = {
   id: string
@@ -26,4 +27,11 @@ export type AppForm = {
   repo_url: string | null
   default_branch: string
   bot_token: string
+}
+
+export type DeployJob = {
+  id: string
+  status: DeployJobStatus
+  created_at: string
+  finished_at: string
 }
