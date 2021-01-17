@@ -13,9 +13,8 @@ type Props = {
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
+  border-bottom: 2px solid grey;
 `
-
-const FAKE_TOKEN = '********************************'
 
 const AppItem = ({ data }: Props) => (
   <Container>

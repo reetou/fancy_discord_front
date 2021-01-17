@@ -2,9 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Container = styled.button`
-  padding: 0.75rem;
-  background-color: ${({ theme }) => theme.colors.primary};
-  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  background-color: ${({ theme }) => theme.colors.btn_primary};
+  border: none !important;
   font-weight: bold;
   :hover {
     cursor: pointer;

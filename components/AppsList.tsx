@@ -22,11 +22,6 @@ const CreateAppContainer = styled.div`
 
 const AppsList = ({ items }: Props) => (
   <Container>
-    <CreateAppContainer>
-      <Link href="/apps/create">
-        <Button text="Create App" onClick={() => {}} />
-      </Link>
-    </CreateAppContainer>
     {items.map((item) => (
       <AppItem key={item.id} data={item} />
     ))}

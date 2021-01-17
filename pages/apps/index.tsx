@@ -5,6 +5,9 @@ import AppsList from "../../components/AppsList";
 import { GetServerSidePropsContext } from "next";
 import { toLogin } from "../../utils/responseUtils";
 import Apps from "../../api/Apps";
+import Link from "next/link";
+import Button from "../../components/Button";
+import BlockTitle from "../../components/BlockTitle";
 
 type Props = {
   apps: App[]
@@ -12,7 +15,13 @@ type Props = {
 
 const WithStaticProps = ({ apps }: Props) => (
   <Layout title="My apps">
-    <h1>My Apps</h1>
+    <BlockTitle style={{ alignItems: 'center', display: 'flex' }}>
+      <span style={{ marginRight: 12 }}>My Apps</span>
+
+      <Link href="/apps/create">
+        <Button text="Create App" onClick={() => {}} />
+      </Link>
+    </BlockTitle>
     <AppsList items={apps} />
   </Layout>
 )

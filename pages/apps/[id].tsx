@@ -18,7 +18,7 @@ type Props = {
 
 const ErrorMessageContainer = styled.div`
   margin: 1rem;
-  background-color: crimson;
+  background-color: aquamarine;
   padding: 1rem;
   font-size: 1.2rem;
 `

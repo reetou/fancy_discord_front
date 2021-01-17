@@ -3,8 +3,10 @@ import { createGlobalStyle, ThemeProvider } from 'styled-components'
 
 const theme = {
   colors: {
-    primary: '#FFFFFF',
-    bg: '#2C2F33'
+    primary: '#2E363E',
+    btn_primary: '#425AE6',
+    btn_text_color: '#F5F9FC',
+    bg: '#F5F9FC'
   },
 }
 
@@ -16,6 +18,10 @@ const GlobalStyle = createGlobalStyle`
     background-color: ${theme.colors.bg};
     color: ${theme.colors.primary};
     font-family: 'Roboto', sans-serif;
+  }
+  button {
+    border: none;
+    color: ${theme.colors.btn_text_color};
   }
   a {
     color: ${theme.colors.primary};

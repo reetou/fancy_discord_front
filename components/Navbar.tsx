@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from "styled-components";
 import Link from "next/link";
+import { SIGN_IN_URL } from "../utils/constants";
 
 interface Props {
   authenticated: boolean
@@ -37,7 +38,7 @@ export default function Navbar(props: Props) {
     <Container>
       <NavLink href="/" name="Home" />
       {props.authenticated ? <NavLink href="/apps" name="My apps" /> : null}
-      {!props.authenticated ? <NavLink href="/login" name="Sign In" /> : null}
+      {!props.authenticated ? <NavLink href={SIGN_IN_URL} name="Sign In" /> : null}
     </Container>
   )
 }

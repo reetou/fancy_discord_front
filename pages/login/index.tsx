@@ -1,22 +1,22 @@
-import { GetStaticProps } from 'next'
+import { GetServerSidePropsContext, GetStaticProps } from 'next'
 import Layout from '../../components/Layout'
 import Auth from "../../api/Auth";
 import React from "react";
+import Button from "../../components/Button";
+import { SIGN_IN_URL } from "../../utils/constants";
 
-type Props = {
-  signInUrl: string;
-}
+type Props = {}
 
 const WithStaticProps = (props: Props) => (
   <Layout title="Sign In">
     <h1>You can sign in with Discord</h1>
-    <button onClick={() => location.href = props.signInUrl}>Sign In</button>
+    <Button text="Sign In" onClick={() => location.href = SIGN_IN_URL} />
   </Layout>
 )
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSidePropsContext = async (ctx: GetServerSidePropsContext) => {
   try {
-    await Auth.check()
+    await Auth.check(ctx)
     return {
       redirect: {
         permanent: false,
@@ -25,9 +25,7 @@ export const getStaticProps: GetStaticProps = async () => {
     }
   } catch (e) {
     return {
-      props: {
-        signInUrl: process.env.NODE_ENV === 'production' ? 'https://fancydiscord.com/auth' : 'http://localhost:4000/auth/discord/new'
-      }
+      props: {}
     }
   }
 }

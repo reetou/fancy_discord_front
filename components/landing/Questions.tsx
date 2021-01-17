@@ -7,16 +7,11 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 2rem;
-`
-
-const Title = styled.div`
-  font-size: 1.2rem;
-  font-weight: bold;
+  align-items: center;
 `
 
 const Questions = () => (
   <Container>
-    <Title>More details</Title>
     <QuestionAnswer
       question="How to sign in?"
       answer="Press Sign In button on top of the page and you will be redirected to Discord official page to confirm sign in. After that you will be able to create your app on My Apps page"

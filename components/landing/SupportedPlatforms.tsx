@@ -1,6 +1,7 @@
 import React from 'react'
 
 import styled from "styled-components";
+import BlockTitle from "../BlockTitle";
 
 const Container = styled.div`
   display: flex;
@@ -16,7 +17,7 @@ const Item = styled.div`
 
 const SupportedPlatforms = () => (
   <Container>
-    <h3>We support following languages out-of-the-box:</h3>
+    <BlockTitle>SUPPORTED PLATFORMS:</BlockTitle>
     {
       libs.map(l => (
         <Item>{`- ${l}`}</Item>
