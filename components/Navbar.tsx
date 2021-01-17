@@ -24,7 +24,7 @@ const NavItem = styled.a`
   }
 `
 
-function NavLink({ href, name }) {
+function NavLink({ href, name }: {href: string, name: string}) {
   // Must add passHref to Link
   return (
     <Link href={href} passHref>

@@ -1,4 +1,4 @@
-import { GetServerSidePropsContext, GetStaticProps } from 'next'
+import { GetServerSidePropsContext, GetServerSidePropsResult } from 'next'
 import Layout from '../../components/Layout'
 import Auth from "../../api/Auth";
 import React from "react";
@@ -14,7 +14,7 @@ const WithStaticProps = (props: Props) => (
   </Layout>
 )
 
-export const getServerSideProps: GetServerSidePropsContext = async (ctx: GetServerSidePropsContext) => {
+export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   try {
     await Auth.check(ctx)
     return {

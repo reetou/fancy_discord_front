@@ -9,14 +9,12 @@ import Button from "../../components/Button";
 import Apps from "../../api/Apps";
 import styled from "styled-components";
 
-type Props = {}
-
 const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
 `
 
-const WithStaticProps = (props: Props) => {
+const WithStaticProps = () => {
   const [form, setForm] = useState<AppForm>({
     project_name: '',
     bot_token: '',

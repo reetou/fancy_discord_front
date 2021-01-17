@@ -4,7 +4,6 @@ import Link from 'next/link'
 import { App } from '../interfaces'
 import Button from "./Button";
 import styled from "styled-components";
-import Input from "./Input";
 
 type Props = {
   data: App
