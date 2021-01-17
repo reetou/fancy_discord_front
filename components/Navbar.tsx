@@ -16,7 +16,6 @@ const Container = styled.nav`
 `
 
 const NavItem = styled.a`
-  color: red;
   text-decoration: none;
   padding: 1rem;
   :visited {
