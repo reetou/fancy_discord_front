@@ -36,6 +36,7 @@ export default function Navbar(props: Props) {
   return (
     <Container>
       <NavLink href="/" name="Home" />
+      <NavLink href="/docs" name="Documentation" />
       {props.authenticated ? <NavLink href="/apps" name="My apps" /> : null}
       {!props.authenticated ? <NavLink href={SIGN_IN_URL} name="Sign In" /> : null}
     </Container>

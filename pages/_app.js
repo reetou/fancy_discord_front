@@ -24,11 +24,7 @@ const GlobalStyle = createGlobalStyle`
     color: ${theme.colors.btn_text_color};
   }
   a {
-    color: ${theme.colors.primary};
     text-decoration: none;
-    :visited {
-      color: ${theme.colors.primary};
-    }
   }
 `
 

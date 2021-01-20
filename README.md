@@ -51,3 +51,4 @@ A `type-check` script is also added to `package.json`, which runs TypeScript's `
 - [ ] Add SWR to app details page
 - [ ] Add better job status
 - [ ] Add guides
+- [ ] Add compiling Markdown pages to html
