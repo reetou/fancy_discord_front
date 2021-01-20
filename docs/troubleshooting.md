@@ -3,6 +3,7 @@
 ### App has been deployed successfully but bot isn't online
 
 * Please make sure you have a valid Bot token. If you had an invalid bot token you need to change it in app settings and press Deploy again.
+* It's also possible that your code is crashing. We try to restart bot 10 times on failure.
 
 ### Deploy has a status `failed`
 
