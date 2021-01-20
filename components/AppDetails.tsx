@@ -25,9 +25,34 @@ const Field = styled.div`
 
 const FAKE_TOKEN = '********************************'
 
+const canInitializeApp = (app: App) => {
+  if (app.deployed) {
+    return false
+  }
+  switch (app.status) {
+    case "init_success":
+    case "init_in_progress":
+    case "free":
+    case "destroy_in_progress":
+    case "deploy_in_progress":
+      return false
+    case "init_required":
+    case "init_failed":
+    default:
+      return true
+  }
+}
+
 const AppDetails = ({ data, onDeploy, onDestroyDeploy, onInitDeploy }: Props) => {
   return (
     <Container>
+      <Link href={`/apps/${data.id}/edit`}>
+        <Button
+          style={{width: 180}}
+          text="Edit settings"
+          onClick={() => {}}
+        />
+      </Link>
       <h1>{data.project_name}</h1>
       {
         data.deployed
@@ -66,7 +91,11 @@ const AppDetails = ({ data, onDeploy, onDestroyDeploy, onInitDeploy }: Props) =>
               onClick={onDeploy}
             />
           )
-          : (
+          : null
+      }
+      {
+        canInitializeApp(data)
+          ? (
             <Button
               style={{
                 width: 220
@@ -75,6 +104,7 @@ const AppDetails = ({ data, onDeploy, onDestroyDeploy, onInitDeploy }: Props) =>
               onClick={onInitDeploy}
             />
           )
+          : null
       }
     </Container>
   )

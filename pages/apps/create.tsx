@@ -18,7 +18,7 @@ const WithStaticProps = () => {
   const [form, setForm] = useState<AppForm>({
     project_name: '',
     bot_token: '',
-    default_branch: 'main',
+    default_branch: '',
     repo_url: '',
     type: 'js'
   })
@@ -45,6 +45,7 @@ const WithStaticProps = () => {
           placeholder="Project name"
         />
         <Input
+          type="password"
           value={form.bot_token}
           onChange={(val) => setForm({...form, bot_token: val})}
           placeholder="Bot token"
@@ -52,7 +53,7 @@ const WithStaticProps = () => {
         <Input
           value={form.repo_url}
           onChange={(val) => setForm({...form, repo_url: val})}
-          placeholder="Repo url"
+          placeholder="https://github.com/username/projectname"
         />
         <Input
           value={`App type: ${form.type}. Cannot be changed at the moment`}

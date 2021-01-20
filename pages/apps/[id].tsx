@@ -1,6 +1,6 @@
 import { GetStaticProps, GetStaticPaths, GetServerSideProps } from 'next'
 
-import { App, DeployJob } from '../../interfaces'
+import { App, AppStatus, DeployJob } from '../../interfaces'
 import Layout from '../../components/Layout'
 import Apps from "../../api/Apps";
 import { toLogin } from "../../utils/responseUtils";
@@ -9,6 +9,8 @@ import { useEffect, useState } from "react";
 import DeployDetails from "../../components/DeployDetails";
 import Deploy from "../../api/Deploy";
 import styled from "styled-components";
+import useSWR from "swr";
+import { fetcher } from "../../api/fetcher";
 
 type Props = {
   item: App
@@ -23,14 +25,49 @@ const ErrorMessageContainer = styled.div`
   font-size: 1.2rem;
 `
 
+const getAppStatusMessage = (status: AppStatus) => {
+  switch (status) {
+    case "deploy_in_progress":
+      return 'Deploy in progress...'
+    case "destroy_in_progress":
+      return 'App destroy is in progress. Deploy is not possible.'
+    case "init_failed":
+      return 'App initialization failed. Try again.'
+    case "init_in_progress":
+      return 'App initialization is in progress...'
+    case "init_required":
+      return 'App initialization required. Press Initialize app'
+    case "init_success":
+      return 'App was initialized successfully. You can deploy.'
+    case "free":
+    default:
+      return null
+  }
+}
+
 const AppPage = ({ item, errors }: Props) => {
+  const [app, setApp] = useState<App>(item)
+  const { data, error } = useSWR(`/apps/${app.id}`, fetcher, {
+    initialData: {
+      data: {
+        app,
+      }
+    },
+    refreshInterval: 20000,
+  })
+  useEffect(() => {
+    if (!data) {
+      return
+    }
+    setApp(data.data.app)
+  }, [data])
   const [deployDetails, setDeployDetails] = useState<DeployJob>()
   const [errorMessage, setErrorMessage] = useState<string>('')
   const getDeployDetails = async () => {
     try {
       setErrorMessage('')
       console.log(`Getting deploy details`)
-      const data = await Deploy.lastDetails(item.id)
+      const data = await Deploy.lastDetails(app.id)
       setDeployDetails(data.job)
     } catch (e) {
       if (e.response && e.response.data && e.response.data.errors) {
@@ -43,7 +80,11 @@ const AppPage = ({ item, errors }: Props) => {
   }
   const onDeploy = async () => {
     try {
-      const data = await Deploy.createDeploy(item.id)
+      const data = await Deploy.createDeploy(app.id)
+      setApp({
+        ...app,
+        status: 'deploy_in_progress',
+      })
       setErrorMessage('')
       setDeployDetails(data.job)
     } catch (e) {
@@ -52,15 +93,24 @@ const AppPage = ({ item, errors }: Props) => {
   }
   const onDestroyDeploy = async () => {
     try {
-      await Deploy.destroyDeploy(item.id)
+      await Deploy.destroyDeploy(app.id)
+      setApp({
+        ...app,
+        status: 'destroy_in_progress',
+      })
     } catch (e) {
       console.error(`Cannot destroy deploy`, e)
     }
   }
   const onInitDeploy = async () => {
     try {
-      const res = await Deploy.initDeploy(item.id)
+      const res = await Deploy.initDeploy(app.id)
       console.log(`Data`, res)
+      getDeployDetails()
+      setApp({
+        ...app,
+        status: 'init_in_progress',
+      })
     } catch (e) {
       console.error(`Cannot init`, e)
     }
@@ -79,15 +129,16 @@ const AppPage = ({ item, errors }: Props) => {
   }
 
   return (
-    <Layout title={item.project_name}>
+    <Layout title={app.project_name}>
       <AppDetails
-        data={item}
+        data={app}
         onDeploy={onDeploy}
         onDestroyDeploy={onDestroyDeploy}
         onInitDeploy={onInitDeploy}
       />
-      {deployDetails && item.deployed ? <DeployDetails data={deployDetails} /> : null}
-      {errorMessage ? <ErrorMessageContainer>{errorMessage}</ErrorMessageContainer> : null}
+      {deployDetails && app.deployed ? <DeployDetails data={deployDetails} /> : null}
+      {app.status ? <ErrorMessageContainer>{getAppStatusMessage(app.status)}</ErrorMessageContainer> : null}
+      {errorMessage && app.deployed ? <ErrorMessageContainer>{errorMessage}</ErrorMessageContainer> : null}
     </Layout>
   )
 }

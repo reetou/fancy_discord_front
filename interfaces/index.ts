@@ -10,6 +10,7 @@ export type User = {
 }
 
 export type AppType = 'js'
+export type AppStatus = 'init_failed' | 'free' | 'init_in_progress' | 'init_success' | 'destroy_in_progress' | 'deploy_in_progress' | 'init_required'
 export type DeployJobStatus = 'success' | 'failed' | 'canceled' | 'running' | 'pending'
 
 export type App = {
@@ -20,14 +21,15 @@ export type App = {
   default_branch: string
   has_bot_token: boolean
   deployed: boolean
+  status?: AppStatus
 }
 
 export type AppForm = {
   project_name: string
-  type: AppType
+  type?: AppType
   repo_url: string | null
   default_branch: string
-  bot_token: string
+  bot_token?: string
 }
 
 export type DeployJob = {

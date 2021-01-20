@@ -9,6 +9,8 @@ const StyledInput = styled.input`
   border: none;
   border-radius: 4px;
   transition: 0.2s;
+  border: 1px solid black;
+  margin-bottom: 1rem;
 `
 
 interface Props {

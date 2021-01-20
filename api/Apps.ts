@@ -22,13 +22,24 @@ const create = async (data: AppForm): Promise<{app: App}> => {
   return res.data
 }
 
-const get = async (id: string, cookie: string): Promise<{app: App}> => {
+const update = async (id: string, data: AppForm): Promise<{app: App}> => {
+  const res = await axios({
+    method: 'PUT',
+    url: `/apps/${id}`,
+    data
+  })
+  return res.data
+}
+
+const get = async (id: string, cookie?: string): Promise<{app: App}> => {
   const res = await axios({
     method: 'GET',
     url: `/apps/${id}`,
-    headers: {
-      cookie,
-    }
+    ...cookie ? {
+      headers: {
+        cookie,
+      }
+    } : {},
   })
   return res.data
 }
@@ -37,4 +48,5 @@ export default {
   getApps,
   create,
   get,
+  update,
 }
