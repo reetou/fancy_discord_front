@@ -1,6 +1,7 @@
 import matter from 'gray-matter'
 import { join } from "path";
 import * as fs from "fs";
+import docsList from "./docsList";
 
 const docsDirectory = join(process.cwd(), 'docs')
 
@@ -14,11 +15,5 @@ export function getDocBySlug(slug: string) {
 }
 
 export function getAllDocs() {
-  return [
-    { slug: 'getstarted' },
-    { slug: 'troubleshooting' },
-    { slug: 'language-specific-requirements' },
-    { slug: 'migrating' },
-    { slug: 'contacts' },
-  ]
+  return docsList
 }

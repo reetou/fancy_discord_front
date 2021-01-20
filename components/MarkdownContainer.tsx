@@ -1,9 +1,9 @@
-import Layout from './Layout'
 import React from 'react'
 import ReactMarkdown from "react-markdown";
 // @ts-ignore
 import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter'
 import remarkGfm from "remark-gfm";
+import DocsLayout from "./DocsLayout";
 
 interface Props {
   meta: any
@@ -17,7 +17,7 @@ const renderers = {
 }
 
 export default function MarkdownContainer({ meta, content }: Props) {
-  return <Layout>
+  return <DocsLayout>
     <ReactMarkdown renderers={renderers} plugins={[remarkGfm]} children={content} />
-  </Layout>
+  </DocsLayout>
 }

@@ -5,6 +5,7 @@ import styled from "styled-components";
 import Footer from "./Footer";
 import useSWR from 'swr';
 import { fetcher } from "../api/fetcher";
+import DocsSidebar from "./DocsSidebar";
 
 type Props = {
   children?: ReactNode
@@ -12,11 +13,14 @@ type Props = {
 }
 
 const BodyContainer = styled.div`
-  padding: 0 10%;
   min-height: calc(100vh - 60px);
+  padding: 0 12px;
+  @media(min-width: 768px) {
+    padding: 0 25%;
+  }
 `
 
-const Layout = ({ children, title = 'This is the default title' }: Props) => {
+const DocsLayout = ({ children, title = 'FancyDiscord Documentation' }: Props) => {
   const [authenticated, setAuthenticated] = useState<boolean>(false)
   const { data, error } = useSWR('/auth/check', fetcher)
   useEffect(() => {
@@ -38,6 +42,7 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => {
         <Navbar authenticated={authenticated} />
       </header>
       <BodyContainer>
+        <DocsSidebar />
         {children}
       </BodyContainer>
       <Footer />
@@ -45,4 +50,4 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => {
   )
 }
 
-export default Layout
+export default DocsLayout

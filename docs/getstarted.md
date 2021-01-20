@@ -5,7 +5,9 @@
 
 **FancyDiscord** allows you to deploy without worrying about paying a relatively high price for vps hosting and configuring it. **Create App and press Deploy** - it should be exactly like that.
 
-Service is currently free while it's in an alpha stage. Our resources are limited hence deployments *older than 4 hours* are automatically destroyed to clean up space for actively maintained bots and prevent abuse. 
+Service is currently free while it's in an alpha stage. Our resources VERY limited hence deployments *older than 4 hours* are automatically destroyed to clean up space for actively maintained bots and prevent abuse.
+
+We value Discord community and appreciate any efforts to make service better. 
 
 **You can safely deploy your bot again if your deployment was destroyed.**  
 

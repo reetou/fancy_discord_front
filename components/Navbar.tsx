@@ -10,8 +10,10 @@ interface Props {
 const Container = styled.nav`
   display: flex;
   align-items: center;
+  position: relative;
+  z-index: 2;
   height: 60px;
-  margin: 0.5rem;
+  padding: 0.5rem;
   background-color: ${({ theme }) => theme.colors.bg};
 `
 

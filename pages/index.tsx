@@ -178,7 +178,7 @@ const IndexPage = () => (
           <b>FancyDiscord</b> allows you to deploy your bot in just one click without additional configuration
         </ContentDescription>
         <TryButtonContainer style={{ alignItems: 'flex-start' }}>
-          <Link href="/login" prefetch>
+          <Link href="/docs">
             <Button
               style={{ paddingLeft: '3rem', paddingRight: '3rem' }}
               text="Get started"
@@ -200,10 +200,10 @@ const IndexPage = () => (
         ))
       }
     </FeaturesRow>
-    <SecondaryTitle style={{ textAlign: 'center' }}>Details</SecondaryTitle>
+    <SecondaryTitle>Details</SecondaryTitle>
     <Questions />
     <TryButtonContainer>
-      <Link href="/login" prefetch>
+      <Link href="/docs">
         <Button
           text="GET STARTED"
           onClick={() => {}}
