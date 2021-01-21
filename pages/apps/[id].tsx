@@ -5,7 +5,7 @@ import Layout from '../../components/Layout'
 import Apps from "../../api/Apps";
 import { toLogin } from "../../utils/responseUtils";
 import AppDetails from "../../components/AppDetails";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import DeployDetails from "../../components/DeployDetails";
 import Deploy from "../../api/Deploy";
 import styled from "styled-components";
@@ -30,7 +30,7 @@ const getAppStatusMessage = (status: AppStatus) => {
     case "deploy_in_progress":
       return 'Deploy in progress...'
     case "destroy_in_progress":
-      return 'App destroy is in progress. Deploy is not possible.'
+      return 'App destroy in progress. Deploy is not possible. You can deploy again when destroy will complete'
     case "init_failed":
       return 'App initialization failed. Try again.'
     case "init_in_progress":
@@ -61,32 +61,15 @@ const AppPage = ({ item, errors }: Props) => {
     }
     setApp(data.data.app)
   }, [data])
-  const [deployDetails, setDeployDetails] = useState<DeployJob>()
   const [errorMessage, setErrorMessage] = useState<string>('')
-  const getDeployDetails = async () => {
-    try {
-      setErrorMessage('')
-      console.log(`Getting deploy details`)
-      const data = await Deploy.lastDetails(app.id)
-      setDeployDetails(data.job)
-    } catch (e) {
-      if (e.response && e.response.data && e.response.data.errors) {
-        setErrorMessage(e.response.data.errors.data)
-      } else {
-        setErrorMessage('Cannot get last deploy')
-      }
-      console.error(`Cannot get deploy`, e)
-    }
-  }
   const onDeploy = async () => {
     try {
-      const data = await Deploy.createDeploy(app.id)
+      await Deploy.createDeploy(app.id)
       setApp({
         ...app,
         status: 'deploy_in_progress',
       })
       setErrorMessage('')
-      setDeployDetails(data.job)
     } catch (e) {
       console.error(`Cannot deploy`, e)
     }
@@ -106,7 +89,6 @@ const AppPage = ({ item, errors }: Props) => {
     try {
       const res = await Deploy.initDeploy(app.id)
       console.log(`Data`, res)
-      getDeployDetails()
       setApp({
         ...app,
         status: 'init_in_progress',
@@ -115,9 +97,6 @@ const AppPage = ({ item, errors }: Props) => {
       console.error(`Cannot init`, e)
     }
   }
-  useEffect(() => {
-    getDeployDetails()
-  }, [])
   if (errors) {
     return (
       <Layout title="Error | Next.js + TypeScript Example">
@@ -128,6 +107,8 @@ const AppPage = ({ item, errors }: Props) => {
     )
   }
 
+  const showDeployDetails = app.status && ['free', 'deploy_in_progress'].includes(app.status)
+
   return (
     <Layout title={app.project_name}>
       <AppDetails
@@ -136,8 +117,8 @@ const AppPage = ({ item, errors }: Props) => {
         onDestroyDeploy={onDestroyDeploy}
         onInitDeploy={onInitDeploy}
       />
-      {deployDetails && app.deployed ? <DeployDetails data={deployDetails} /> : null}
-      {app.status ? <ErrorMessageContainer>{getAppStatusMessage(app.status)}</ErrorMessageContainer> : null}
+      {showDeployDetails ? <DeployDetails app={app} /> : null}
+      {app.status && app.status !== 'free' ? <ErrorMessageContainer>{getAppStatusMessage(app.status)}</ErrorMessageContainer> : null}
       {errorMessage && app.deployed ? <ErrorMessageContainer>{errorMessage}</ErrorMessageContainer> : null}
     </Layout>
   )

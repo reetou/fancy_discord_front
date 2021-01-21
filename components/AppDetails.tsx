@@ -43,7 +43,23 @@ const canInitializeApp = (app: App) => {
   }
 }
 
+const canDeployApp = (app: App) => {
+  switch (app.status) {
+    case "init_success":
+    case "free":
+      return true
+    case "init_in_progress":
+    case "destroy_in_progress":
+    case "deploy_in_progress":
+    case "init_required":
+    case "init_failed":
+    default:
+      return false
+  }
+}
+
 const AppDetails = ({ data, onDeploy, onDestroyDeploy, onInitDeploy }: Props) => {
+  const canDeploy = data.status
   return (
     <Container>
       <Link href={`/apps/${data.id}/edit`}>
@@ -55,19 +71,6 @@ const AppDetails = ({ data, onDeploy, onDestroyDeploy, onInitDeploy }: Props) =>
       </Link>
       <h1>{data.project_name}</h1>
       {
-        data.deployed
-          ? (
-            <Button
-              text="Destroy deploy"
-              onClick={onDestroyDeploy}
-              style={{
-                width: 220
-              }}
-            />
-          )
-          : null
-      }
-      {
         data.has_bot_token
           ? <Field>{`Bot token: ${FAKE_TOKEN}`}</Field>
           : (
@@ -78,10 +81,28 @@ const AppDetails = ({ data, onDeploy, onDestroyDeploy, onInitDeploy }: Props) =>
         <span>Repository URL: </span>
         <Link href={data.repo_url!}>{data.repo_url}</Link>
       </Field>
-      <Field>CPU Limit: 200</Field>
-      <Field>RAM Limit: 200</Field>
       {
-        data.deployed
+        data.default_branch
+          ? (
+            <Field>
+              <span>Branch: </span>
+              <Link href={`${data.repo_url!}/tree/${data.default_branch}`}>{data.default_branch}</Link>
+            </Field>
+          )
+          : null
+      }
+      {
+        data.type
+          ? (
+            <Field>
+              <span>App Type </span>
+              <b>{data.type.toUpperCase()}</b>
+            </Field>
+          )
+          : null
+      }
+      {
+        canDeployApp(data)
           ? (
             <Button
               style={{

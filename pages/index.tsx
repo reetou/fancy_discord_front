@@ -6,6 +6,10 @@ import Questions from "../components/landing/Questions";
 import Button from '../components/Button';
 import Link from 'next/link';
 import styled from "styled-components";
+import { GetServerSideProps } from "next";
+import { toLogin } from "../utils/responseUtils";
+import Apps from "../api/Apps";
+import Public from "../api/Public";
 
 
 const Container = styled.div`
@@ -132,6 +136,11 @@ interface FeatureProps {
   text: string
 }
 
+interface Props {
+  available_machines: number
+  noData?: boolean
+}
+
 function Feature({title, text}: FeatureProps) {
   return (
     <FeatureContainer>
@@ -168,7 +177,7 @@ const FEATURES: FeatureProps[] = [
   },
 ]
 
-const IndexPage = () => (
+const IndexPage = ({ available_machines, noData }: Props) => (
   <Layout title="Home | Next.js + TypeScript Example">
     <Hero>
       <div>
@@ -177,11 +186,16 @@ const IndexPage = () => (
         <ContentDescription>
           <b>FancyDiscord</b> allows you to deploy your bot in just one click without additional configuration
         </ContentDescription>
+        {
+          noData && available_machines
+            ? null
+            : <ContentTitle style={{ marginTop: '2rem' }}>{`${available_machines} bots can be deployed for free right now!`}</ContentTitle>
+        }
         <TryButtonContainer style={{ alignItems: 'flex-start' }}>
           <Link href="/docs">
             <Button
               style={{ paddingLeft: '3rem', paddingRight: '3rem' }}
-              text="Get started"
+              text="GET STARTED"
               onClick={() => {}}
             />
           </Link>
@@ -214,5 +228,14 @@ const IndexPage = () => (
     </TryButtonContainer>
   </Layout>
 )
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  try {
+    const data = await Public.getStats(ctx)
+    return { props: data }
+  } catch (err) {
+    return { props: {noData: true} }
+  }
+}
 
 export default IndexPage

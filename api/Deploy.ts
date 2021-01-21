@@ -14,6 +14,19 @@ const lastDetails = async (id: string, cookie?: string): Promise<{job: DeployJob
   return res.data
 }
 
+const lastJobLogs = async (id: string, cookie?: string): Promise<string> => {
+  const res = await axios({
+    method: 'GET',
+    url: `/apps/${id}/deploys/last/logs`,
+    ...cookie ? {
+      headers: {
+        cookie,
+      }
+    } : {}
+  })
+  return res.data
+}
+
 const createDeploy = async (id: string): Promise<{job: DeployJob}> => {
   const res = await axios({
     method: 'POST',
@@ -43,4 +56,5 @@ export default {
   createDeploy,
   destroyDeploy,
   initDeploy,
+  lastJobLogs,
 }
