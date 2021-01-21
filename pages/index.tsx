@@ -187,7 +187,7 @@ const IndexPage = ({ available_machines, noData }: Props) => (
           <b>FancyDiscord</b> allows you to deploy your bot in just one click without additional configuration
         </ContentDescription>
         {
-          noData && available_machines
+          noData
             ? null
             : <ContentTitle style={{ marginTop: '2rem' }}>{`${available_machines} bots can be deployed for free right now!`}</ContentTitle>
         }
