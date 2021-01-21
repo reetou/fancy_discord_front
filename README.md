@@ -55,3 +55,4 @@ A `type-check` script is also added to `package.json`, which runs TypeScript's `
 - [x] Add compiling Markdown pages to html
 - [ ] Add disable buttons when request is processing
 - [x] Add logs page
+- [ ] Add errors modals
