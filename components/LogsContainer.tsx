@@ -23,7 +23,6 @@ export default function LogsContainer({ app }: Props) {
     revalidateOnMount: true,
     revalidateOnReconnect: false,
     onSuccess: (data) => {
-      console.log(`Logs success`, data)
       setLogs(data.data)
     }
   })

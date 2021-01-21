@@ -45,11 +45,9 @@ const DeployDetails = ({ app }: Props) => {
   const { data, error } = useSWR(`/apps/${app.id}/deploys/last`, fetcher, {
     refreshInterval: 20000,
     onSuccess: (data) => {
-      console.log(`Data success`, data)
       setJob(data.data.job)
     }
   })
-  console.log(`Error`, error)
   if (!data || !job) {
     return (
       <Container>
