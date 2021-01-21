@@ -8,6 +8,7 @@
 ### Deploy has a status `failed`
 
 * First, make sure your code is working on your local machine
+* Make sure your bot token is valid
 * Try to `git clone` a repository URL you provided in app settings - it should be successfuly cloned in order to deploy
 * Check if there's a misconfiguration or incompatibility with our [Language-specific Requirements](/docs/language-specific-requirements).
 * Try again
