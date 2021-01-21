@@ -42,11 +42,11 @@ We value Discord community and appreciate any efforts to make service better.
 ### Checks
 - Make sure you have created and initialized your app successfully.
 - If you are migrating from another hosting service, make sure you have configured your project following [Migrating from other services](/docs/migrating) page. If you just created your bot and want to deploy it, just proceed.
-- Make sure you have `Procfile` with `web=%your_start_script%` or you have configured it following  [Language-specific Requirements](/docs/language-specific-requirements) page.
+- Make sure you have configured it following  [Language-specific Requirements](/docs/language-specific-requirements) page.
 - Make sure you have removed `.buildpacks` file to avoid any compatibility errors
 ### Deploy process
 - Press **Deploy** button
-- Wait for it to complete (usually 5 minutes but may be up to 1 hour depending on available resources)
+- Wait for it to complete (usually 3-5 minutes but may be up to 1 hour depending on available resources)
 - Ensure your job finished with `Success` status
 - Your bot should be online and working!
 - If something is not right:
