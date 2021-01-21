@@ -50,8 +50,8 @@ A `type-check` script is also added to `package.json`, which runs TypeScript's `
 - [x] Deploy app
 - [x] Add edit app
 - [x] Add SWR to app details page
-- [ ] Add better job status
+- [x] Add better job status
 - [x] Add guides
 - [x] Add compiling Markdown pages to html
 - [ ] Add disable buttons when request is processing
-- [ ] Add logs page
+- [x] Add logs page
