@@ -1,1 +1,3 @@
-export const SIGN_IN_URL = process.env.NODE_ENV === 'production' ? (process.env.SIGN_IN_URL || 'https://fancydiscord.com/auth/discord/new') : 'http://localhost:4001/auth/discord/new'
+export const API_HOST = process.env.NODE_ENV === 'production' ? 'https://api.fancy-discord.com' : 'http://localhost:4001'
+
+export const SIGN_IN_URL = `${API_HOST}/auth/discord/new`

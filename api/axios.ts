@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { API_HOST } from "./index";
+import { API_HOST } from "../utils/constants";
 
 // @ts-ignore
 axios.defaults.baseURL = `${API_HOST}`
