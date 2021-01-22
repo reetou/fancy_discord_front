@@ -29,7 +29,7 @@ const Questions = () => (
     />
     <QuestionAnswer
       question="Where will my bot be hosted geographically?"
-      answer="Frankfurt or San-Francisco, depending on available resources"
+      answer="Frankfurt, Moscow or San-Francisco, depending on available resources"
     />
     <QuestionAnswer
       question="Resource limits?"
