@@ -56,3 +56,4 @@ A `type-check` script is also added to `package.json`, which runs TypeScript's `
 - [ ] Add disable buttons when request is processing
 - [x] Add logs page
 - [ ] Add errors modals
+- [ ] Add troubleshooting link on app page
