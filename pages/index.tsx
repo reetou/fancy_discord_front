@@ -164,7 +164,7 @@ const FEATURES: FeatureProps[] = [
     text: 'If you have a machine with database - it will work just fine. Built-in database is in our roadmap.'
   },
   {
-    title: 'Compatible with popular libraries',
+    title: 'Compatible',
     text: 'If you are building with one of our supported platforms it will work right out of the box.'
   },
   {
