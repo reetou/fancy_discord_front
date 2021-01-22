@@ -17,7 +17,7 @@ const Questions = () => (
     />
     <QuestionAnswer
       question="Is it free?"
-      answer="It's absolutely free for the alpha stage. Notice though that your deployment will be destroyed after 4 hours after deploy and you have to deploy it again. It's done for economy purposes."
+      answer="It's absolutely free for the alpha stage. Notice though that your deployment will be destroyed every once in a while and you have to deploy it again. It's done for economy purposes since we are low on resources right now."
     />
     <QuestionAnswer
       question="Bot logs?"
