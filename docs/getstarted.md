@@ -14,7 +14,7 @@ We value Discord community and appreciate any efforts to make service better.
 #### Supported languages:
 - JavaScript (Discord.js, Eris.js and others)
 - Python (discord.py and others)
-- Golang (discordgo)
+- Golang (discordgo and others)
 
 #### General project requirements:
 - Your project should be accessible via git repository (github, gitlab, bitbucket, etc)
@@ -33,7 +33,7 @@ We value Discord community and appreciate any efforts to make service better.
   * Bot token - token you have generated on the [Discord Developer portal](https://discord.com/developers/applications)
   * Project name - anything, visible only for you
   * Default branch - your main branch where you push your production code, probably `main` or `master`
-  * Type - choose your preferred language. It cannot be changed later.
+  * Type - choose your preferred language. It **cannot** be changed later.
 - Press **Submit**
 - You're good! You will be redirected to [apps page](/apps) page. Press **Open** on a newly created app
 - Press **Initialize app** and wait for it to complete (up to 10 minutes depending on available resources) and then you can deploy.
