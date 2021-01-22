@@ -8,6 +8,7 @@ import { AppForm } from "../../interfaces";
 import Button from "../../components/Button";
 import Apps from "../../api/Apps";
 import styled from "styled-components";
+import Select from "../../components/Select";
 
 const FormContainer = styled.div`
   display: flex;
@@ -55,11 +56,14 @@ const WithStaticProps = () => {
           onChange={(val) => setForm({...form, repo_url: val})}
           placeholder="https://github.com/username/projectname"
         />
-        <Input
-          value={`App type: ${form.type}. Cannot be changed at the moment`}
-          disabled
-          onChange={() => {}}
-          placeholder="App type: js"
+        <Select
+          value={form.type}
+          options={[
+            { value: 'js', label: 'JavaScript' },
+            { value: 'python', label: 'Python' },
+          ]}
+          onChange={(val) => setForm({...form, type: val})}
+          title="Bot language"
         />
         <Input
           value={form.default_branch}

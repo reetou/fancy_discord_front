@@ -13,8 +13,8 @@ We value Discord community and appreciate any efforts to make service better.
 
 #### Supported languages:
 - JavaScript (Discord.js, Eris.js and others)
+- Python (discord.py and others)
 - Golang (discordgo)
-- Python (discord.py)
 
 #### General project requirements:
 - Your project should be accessible via git repository (github, gitlab, bitbucket, etc)

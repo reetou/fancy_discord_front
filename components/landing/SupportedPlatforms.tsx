@@ -8,7 +8,11 @@ const Container = styled.div`
   flex-direction: column;
 `
 
-const libs = ['JavaScript (Discord.js, Eris.js)']
+const libs = [
+  'JavaScript (Discord.js, Eris.js and others)',
+  'Python (discord.py and any other library)',
+  'Golang (discordgo and others)',
+]
 
 const Item = styled.div`
   padding: 0.5rem;
