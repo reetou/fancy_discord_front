@@ -1,4 +1,4 @@
-# FancyDiscord: Troubleshooting Guide
+# Fancy-Discord: Troubleshooting Guide
 
 ### App has been deployed successfully but bot isn't online
 

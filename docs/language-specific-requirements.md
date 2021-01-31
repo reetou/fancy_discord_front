@@ -1,4 +1,4 @@
-# FancyDiscord: Language-specific requirements
+# Fancy-Discord: Language-specific requirements
 
 ## JavaScript
 - Make sure you have a working `start` script in your package.json **OR** you can have Procfile configuration.

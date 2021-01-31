@@ -1,9 +1,9 @@
-# FancyDiscord: Get Started
+# Fancy-Discord: Get Started
 > Please be aware that documentation is a work in progress. If you noticed something is incorrect, feel free to contact via [Contacts page](/docs/contacts)
 
 ## About
 
-**FancyDiscord** allows you to deploy without worrying about paying a relatively high price for vps hosting and configuring it. **Create App and press Deploy** - it should be exactly like that.
+**Fancy-Discord** allows you to deploy without worrying about paying a relatively high price for vps hosting and configuring it. **Create App and press Deploy** - it should be exactly like that.
 
 Service is currently free while it's in an alpha stage. Our resources VERY limited hence deployments *older than 24 hours* are automatically destroyed to clean up space for actively maintained bots and prevent abuse. You can deploy it again if it has been destroyed.
 

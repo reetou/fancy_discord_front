@@ -99,7 +99,7 @@ const AppPage = ({ item, errors }: Props) => {
   }
   if (errors) {
     return (
-      <Layout title="Error | Next.js + TypeScript Example">
+      <Layout title="Error">
         <p>
           <span style={{ color: 'red' }}>Error:</span> {errors}
         </p>

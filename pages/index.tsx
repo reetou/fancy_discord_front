@@ -178,13 +178,13 @@ const FEATURES: FeatureProps[] = [
 ]
 
 const IndexPage = ({ available_machines, noData }: Props) => (
-  <Layout title="Home | Next.js + TypeScript Example">
+  <Layout title="Home | Fancy-Discord.com">
     <Hero>
       <div>
         <ContentTitle>Discord Bot hosting made easy.</ContentTitle>
         <ContentTitle>With free coding assistance</ContentTitle>
         <ContentDescription>
-          <b>FancyDiscord</b> allows you to deploy your bot in just one click without additional configuration
+          <b>Fancy-Discord</b> allows you to deploy your bot in just one click without additional configuration
         </ContentDescription>
         {
           noData

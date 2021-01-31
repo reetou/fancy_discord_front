@@ -1,4 +1,4 @@
-# FancyDiscord: Migrating from other services
+# Fancy-Discord: Migrating from other services
 
 ## Heroku
 

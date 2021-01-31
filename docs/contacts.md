@@ -1,4 +1,4 @@
-# FancyDiscord: Contacts
+# Fancy-Discord: Contacts
 
 ## Discord
 You can visit support server: [Press me](https://discord.gg/XReqA38eq7)

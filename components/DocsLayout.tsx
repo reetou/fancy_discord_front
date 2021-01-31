@@ -20,7 +20,7 @@ const BodyContainer = styled.div`
   }
 `
 
-const DocsLayout = ({ children, title = 'FancyDiscord Documentation' }: Props) => {
+const DocsLayout = ({ children, title = 'Fancy-Discord Documentation' }: Props) => {
   const [authenticated, setAuthenticated] = useState<boolean>(false)
   const { data, error } = useSWR('/auth/check', fetcher)
   useEffect(() => {
