@@ -152,7 +152,7 @@ function Feature({title, text}: FeatureProps) {
 
 const FEATURES: FeatureProps[] = [
   {
-    title: 'Free',
+    title: 'Free Heroku alternative',
     text: `Our service is free as it's currently in early alpha stage. We won't ask for your credit card or anything.`
   },
   {
@@ -178,7 +178,7 @@ const FEATURES: FeatureProps[] = [
 ]
 
 const IndexPage = ({ available_machines, noData }: Props) => (
-  <Layout title="Home | Fancy-Discord.com">
+  <Layout title="Heroku alternative for Discord bots">
     <Hero>
       <div>
         <ContentTitle>Discord Bot hosting made easy.</ContentTitle>

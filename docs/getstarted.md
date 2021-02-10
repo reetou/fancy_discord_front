@@ -3,7 +3,9 @@
 
 ## About
 
-**Fancy-Discord** allows you to deploy without worrying about paying a relatively high price for vps hosting and configuring it. **Create App and press Deploy** - it should be exactly like that.
+Discord bot hosting **Fancy-Discord** allows you to deploy without worrying about paying a relatively high price for vps hosting and configuring it. **Create App and press Deploy** - it should be exactly like that.
+
+You can use it as **Free Heroku alternative** - because it works right out of the box for Heroku-compatible projects. 
 
 Service is currently free while it's in an alpha stage. Our resources VERY limited hence deployments *older than 24 hours* are automatically destroyed to clean up space for actively maintained bots and prevent abuse. You can deploy it again if it has been destroyed.
 
