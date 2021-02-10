@@ -1,6 +1,6 @@
 # Fancy-Discord: Migrating from other services
 
-## Heroku
+## Migrating from Heroku
 
 You have probably used Procfile configuration for your Heroku project. You just need to change it so you start your entry file like in example below.
 
